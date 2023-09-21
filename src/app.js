@@ -1,5 +1,10 @@
-import express from "express"
-import routes from "./routes"
+import express from 'express'
+import routes from './routes'
+import { resolve } from 'path'
+
+import './database'
+
+
 
 class App {
   constructor() {
@@ -11,6 +16,8 @@ class App {
 
   middlewares() {
     this.app.use(express.json())
+    this.app.use('/products-file',express.static(resolve(__dirname,'..','uploads'))
+    )
   }
 
   routes() {
